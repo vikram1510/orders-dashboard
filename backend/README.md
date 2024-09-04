@@ -12,4 +12,4 @@
 
 - Create an order - `POST /orders`
 
-- Delete an order - `DELETE /orders/:orderId`
+- Delete an order by orderId - `DELETE /orders/:orderId`
