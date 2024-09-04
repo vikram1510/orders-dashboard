@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react"
 import styles from "./Dashboard.module.css"
 import { LoadingIcon } from "./Icons"
-import { getOrders } from "./dataService"
-import { OrderItem } from "./types"
 import { useFetchOrders } from "./hooks/useFetchOrders"
 import { calculateTotalRevenue } from "./utils/calculateTotalRevenue"
 import { toDollars } from "./utils/toDollars"
@@ -28,7 +25,17 @@ import { filterOrders } from "./utils/filterOrders"
 // The getOrders function times out frequently. Display any errors returned while loading the data in the provided div.
 // The retry button should clear the error and reattempt the request
 
-const SellerRanking = ({ position, sellerName, sellerRevenue }: any) => {
+type SellerRankingProps = {
+  position: number
+  sellerName: string
+  sellerRevenue: string
+}
+
+const SellerRanking = ({
+  position,
+  sellerName,
+  sellerRevenue,
+}: SellerRankingProps) => {
   return (
     <tr>
       <td>{position}</td>
