@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getOrders } from "../dataService"
+import { getOrders } from "../dataServiceNew"
 import { OrderItem } from "../types"
 
 export const useFetchOrders = () => {
@@ -9,7 +9,7 @@ export const useFetchOrders = () => {
 
   const fetch = () => {
     getOrders()
-      .then(setOrders)
+      .then((res) => setOrders(res.data))
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false))
   }
