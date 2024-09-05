@@ -17,7 +17,10 @@ export const create = (req: Request, res: Response) => {
   const { success, error } = orderSchema.safeParse(req.body)
 
   // Bad request
-  if (!success) return res.status(400).json({ error: error.message })
+  if (!success) {
+    res.status(400)
+    res.json({ error: error.message })
+  }
 
   const newOrder: Order = {
     orderId: orders.length + 1,
