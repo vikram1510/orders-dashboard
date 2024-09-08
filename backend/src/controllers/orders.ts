@@ -18,8 +18,7 @@ export const create = (req: Request, res: Response) => {
 
   // Bad request
   if (!success) {
-    res.status(400)
-    res.json({ error })
+    return res.status(400).json({ error })
   }
 
   const newOrder: Order = {

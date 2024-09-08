@@ -46,9 +46,9 @@ describe("create", () => {
         status: "Confirmed",
       },
     }
+    const jsonMock = jest.fn()
     const res: Partial<Response> = {
-      json: jest.fn(),
-      status: jest.fn(),
+      status: jest.fn().mockImplementation(() => ({ json: jsonMock })),
     }
 
     const schemaMock = jest.spyOn(orderSchema, "safeParse").mockReturnValue({
@@ -59,7 +59,7 @@ describe("create", () => {
     create(req as Request, res as Response)
 
     expect(res.status).toHaveBeenCalledWith(400)
-    expect(res.json).toHaveBeenCalledWith({
+    expect(jsonMock).toHaveBeenCalledWith({
       error: { message: "Invalid data" },
     })
     expect(schemaMock).toHaveBeenCalledWith(req.body)
