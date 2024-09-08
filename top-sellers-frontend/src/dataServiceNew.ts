@@ -3,8 +3,7 @@ import { OrderItem } from "./types"
 
 const BE_URL = "http://localhost:4000"
 
-export function getOrders() {
-  return axios.get<OrderItem[]>(`${BE_URL}/orders`)
+export async function getOrders() {
+  const res = await axios.get<OrderItem[]>(`${BE_URL}/orders`)
+  return res.data
 }
-
-getOrders()

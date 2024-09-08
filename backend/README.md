@@ -10,6 +10,6 @@
 
 - Get all orders - `GET /orders`
 
-- Create an order - `POST /orders`
+- Create an order `POST /orders` with body `{ sellerName: string, revenue: number, status: "Confirmed" OR "Canceled" }`
 
 - Delete an order by orderId - `DELETE /orders/:orderId`

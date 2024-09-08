@@ -9,7 +9,7 @@ export const useFetchOrders = () => {
 
   const fetch = () => {
     getOrders()
-      .then((res) => setOrders(res.data))
+      .then((res) => setOrders(res))
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false))
   }

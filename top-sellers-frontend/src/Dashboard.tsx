@@ -1,11 +1,7 @@
 import styles from "./Dashboard.module.css"
 import { LoadingIcon } from "./Icons"
-import { useFetchOrders } from "./hooks/useFetchOrders"
-import { calculateTotalRevenue } from "./utils/calculateTotalRevenue"
 import { toDollars } from "./utils/toDollars"
-import { aggregateOrders } from "./utils/aggregateOrders"
-import { sortByRevenue } from "./utils/sortByRevenue"
-import { filterOrders } from "./utils/filterOrders"
+import { useDashboard } from "./hooks/useDashboard"
 
 // Overview:
 // You are provided with an incomplete <Dashboard /> component.
@@ -46,17 +42,7 @@ const SellerRanking = ({
 }
 
 const Dashboard = () => {
-  const { orders, loading, error, refetch } = useFetchOrders()
-
-  const filteredOrders = orders ? filterOrders(orders) : null
-
-  const totalRevenue = filteredOrders
-    ? toDollars(calculateTotalRevenue(filteredOrders))
-    : null
-
-  const sellerList = filteredOrders
-    ? sortByRevenue(aggregateOrders(filterOrders(filteredOrders)))
-    : null
+  const { loading, error, refetch, sellerList, totalRevenue } = useDashboard()
 
   return (
     <div>

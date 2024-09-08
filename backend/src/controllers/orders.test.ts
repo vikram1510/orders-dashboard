@@ -59,7 +59,9 @@ describe("create", () => {
     create(req as Request, res as Response)
 
     expect(res.status).toHaveBeenCalledWith(400)
-    expect(res.json).toHaveBeenCalledWith({ error: "Invalid data" })
+    expect(res.json).toHaveBeenCalledWith({
+      error: { message: "Invalid data" },
+    })
     expect(schemaMock).toHaveBeenCalledWith(req.body)
   })
 })
